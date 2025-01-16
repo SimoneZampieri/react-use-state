@@ -3,11 +3,16 @@ import { useState } from "react";
 
 function Main() {
   const [langSelected, setLangSelected] = useState(0);
-  const [title, updateTitle] = useState("Nessun linguaggio selezionato");
-  const [desc, updateDesc] = useState("");
-}
+  const [title, setTitle] = useState("Nessun linguaggio selezionato");
+  const [desc, setDesc] = useState("");
 
-const Main = () => {
+  function updateTab(id) {
+    const language = languages.find((language) => language.id === id);
+    setLangSelected(id);
+    setTitle(language.title);
+    setDesc(language.description);
+  }
+
   return (
     <main>
       <div className="container py-4">
@@ -15,6 +20,6 @@ const Main = () => {
       </div>
     </main>
   );
-};
+}
 
 export default Main;
